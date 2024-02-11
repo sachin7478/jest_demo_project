@@ -5,7 +5,7 @@ import App, { SubApp } from './App';
 import reportWebVitals from './reportWebVitals';
 import AsyncApp from './AsyncApp';
 import Heading from './Heading';
-
+import OtherPractise from './OtherPractise';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const doSomething = () => {
   console.log("Run Success");
@@ -13,9 +13,10 @@ const doSomething = () => {
 root.render(
   <React.StrictMode>
     {/* <App /> */}
+    <OtherPractise />
     {/* <AsyncApp/> */}
-    <SubApp />
-    <Heading handleFunction={doSomething}/>
+    {/* <SubApp /> */}
+    {/* <Heading handleFunction={doSomething}/> */}
   </React.StrictMode>
 );
 
