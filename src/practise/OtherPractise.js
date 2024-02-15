@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useRef, useState } from "react";
+import UseMemoExapmple from './UseMemoExapmple';
 const OtherPractise = () => {
   const [res, setRes] = useState({});
   const [txt, setTxt] = useState('');
   const [tcount, setTcount] = useState(0);
-  const [stat_promise, setPromisState] = useState('')
+  const [stat_promise, setPromisState] = useState('');
+  const refDiv = useRef();
+
   function bringApi(user = 'sachin7478') {
 
     if(!user?.target?.value.length) {
@@ -64,16 +66,29 @@ const OtherPractise = () => {
       throw new Error(err);
     })
   }
+  let refCount =  0;
+  const refExample = () => {
+    refDiv.current.style.color = 'red';
+    const span = document.createElement('span');
+    
+    setTimeout(()=>{
+      span.innerText = refCount++;
+      span.className = 'px-1 text-green-500 font-bold'
+      refDiv.current.append(span)
+    }, 1000)
+    console.log()
+  }
   return (
     <>
+      {/* Row 1 */}
       <div className="flex flex-row">
     
-        <div className="w-full p-2 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+        <div className="card">
           <h5 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Api call with debounce
           </h5>
-          <div>
-            user: {res?.name || ''}
+          <div className="font-semibold text-xl text-orange-600">
+            User: <span className="text-amber-700">{res?.name || ''}</span>
           </div>
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
             <input type="text" value={txt} onChange={mydebounce(bringApi,1500)}></input> 
@@ -81,7 +96,7 @@ const OtherPractise = () => {
           
         </div>
 
-        <div className="w-full p-2 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+        <div className="card">
           <h5 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Throttle
           </h5>
@@ -93,7 +108,7 @@ const OtherPractise = () => {
           </div>
         </div>
 
-        <div className="w-full p-2 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+        <div className="card">
           <h5 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Promise after few seconds
           </h5>
@@ -106,7 +121,28 @@ const OtherPractise = () => {
           </div>
         </div>
 
-      </div>    
+        <div className="card">
+          <h5 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+            Useref example
+          </h5>
+          <div ref={refDiv}>
+            <p>Change colore & Appending Child</p>
+          </div>
+
+          <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+            <button onClick={refExample}>UseRef Example</button>
+          </div>
+        </div>
+
+        <UseMemoExapmple />
+      </div>
+
+      {/* Row 2 */}
+      <div className="flex flex-row">
+        
+        <div></div>
+        <div></div>
+      </div>
     </>
   );
 };
