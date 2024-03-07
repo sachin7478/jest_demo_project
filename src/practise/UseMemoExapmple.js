@@ -5,7 +5,7 @@ const UseMemoExapmple = () => {
   let [num, setNum] = useState(0);
   let [counter, setCounter] = useState(0);
   const calc = (num) =>{
-    console.log('--- Squaring ---');
+    // console.log('--- Squaring ---');
     return Math.pow(num,2);
   }
 

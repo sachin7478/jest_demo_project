@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import UseMemoExapmple from './UseMemoExapmple';
+import PromiseAllExample from './PromiseAllExmple'
 const OtherPractise = () => {
   const [res, setRes] = useState({});
   const [txt, setTxt] = useState('');
@@ -81,7 +82,7 @@ const OtherPractise = () => {
   return (
     <>
       {/* Row 1 */}
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-center">
     
         <div className="card">
           <h5 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
@@ -133,14 +134,12 @@ const OtherPractise = () => {
             <button onClick={refExample}>UseRef Example</button>
           </div>
         </div>
-
-        <UseMemoExapmple />
       </div>
 
       {/* Row 2 */}
-      <div className="flex flex-row">
-        
-        <div></div>
+      <div className="flex flex-row justify-center">
+        <PromiseAllExample />
+        <UseMemoExapmple />
         <div></div>
       </div>
     </>
