@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import UseMemoExapmple from './UseMemoExapmple';
 import PromiseAllExample from './PromiseAllExmple'
+import StartStopExample from "./StartStopExample";
 const OtherPractise = () => {
   const [res, setRes] = useState({});
   const [txt, setTxt] = useState('');
@@ -138,9 +139,11 @@ const OtherPractise = () => {
 
       {/* Row 2 */}
       <div className="flex flex-row justify-center">
+        <div></div>
         <PromiseAllExample />
         <UseMemoExapmple />
-        <div></div>
+        <StartStopExample />
+        
       </div>
     </>
   );
